@@ -41,6 +41,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.awt.print.Paper;
 import java.io.File;
 
 public class CrashClaim extends JavaPlugin {
@@ -66,6 +67,10 @@ public class CrashClaim extends JavaPlugin {
     public void onLoad() {
         plugin = this;
 
+        if (!PaperLib.isPaper()) {
+            return;
+        }
+
         PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
         //Are all listeners read only?
         PacketEvents.getAPI().getSettings().reEncodeByDefault(false)
@@ -86,6 +91,13 @@ public class CrashClaim extends JavaPlugin {
         if (!bukkitVersion.matches("1\\.20\\.\\d+.*")) {
             getLogger().severe("Incompatible server version: " + bukkitVersion);
             getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        if (!PaperLib.isPaper()){
+            getLogger().severe("This plugin requires Paper to run.");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
 
         Bukkit.getPluginManager().registerEvents(pluginSupport, this);
@@ -124,13 +136,7 @@ public class CrashClaim extends JavaPlugin {
                 PacketListenerPriority.LOW);
         PacketEvents.getAPI().init();
 
-        if (PaperLib.isPaper()) {
-            getLogger().info("Using extra protections provided by the paper api");
-            Bukkit.getPluginManager().registerEvents(new PaperListener(manager, visualizationManager), this);
-        } else {
-            getLogger().info("Looks like your not running paper, some protections will be disabled");
-            PaperLib.suggestPaper(this);
-        }
+        Bukkit.getPluginManager().registerEvents(new PaperListener(manager, visualizationManager), this);
 
         pluginSupport.onEnable();
         LocalizationLoader.register(); // Register PlaceHolders
@@ -164,7 +170,7 @@ public class CrashClaim extends JavaPlugin {
             }
         }
 
-        pluginSupport.onDisable();
+        if (pluginSupport != null) pluginSupport.onDisable();
 
         //Null all references just to be sure, manager will still hold them but this stops this class from being referenced for anything
         dataLoaded = false;

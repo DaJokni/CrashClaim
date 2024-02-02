@@ -14,8 +14,6 @@ public class CrashUtils implements Listener {
 
     public CrashUtils(JavaPlugin javaPlugin){
         plugin = javaPlugin;
-
-        PaperLib.suggestPaper(javaPlugin);
     }
 
     public void setupMenuSubSystem(){
