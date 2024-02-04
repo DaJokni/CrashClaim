@@ -6,28 +6,20 @@ plugins {
 
 repositories {
     mavenLocal()
-    maven("https://repo.codemc.io/repository/maven-public/")
-    maven("https://repo.codemc.io/repository/maven-snapshots/")
-    maven("https://ci.ender.zone/plugin/repository/everything/")
-    maven("https://repo.aikar.co/content/groups/aikar/")
-    maven("https://repo.dmulloy2.net/repository/releases/")
-    maven("https://papermc.io/repo/repository/maven-public/")
-    maven("https://jcenter.bintray.com")
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    maven("https://jitpack.io")
-    maven("https://nexus.wesjd.net/repository/thirdparty/")
-    maven("https://oss.sonatype.org/content/repositories/snapshots/")
-    maven("https://maven.enginehub.org/repo/")
-    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
-    maven("https://repo.mikeprimm.com/")
-    maven("https://repo.maven.apache.org/maven2/")
-    maven("https://repo.codemc.io/repository/maven-releases/")
-
-    maven {
-        url = uri("https://repo.papermc.io/repository/maven-public/")
-    }
-
     mavenCentral()
+    maven("https://jitpack.io")
+    maven("https://repo.mikeprimm.com/")
+    maven("https://jcenter.bintray.com")
+    maven("https://maven.enginehub.org/repo/")
+    maven("https://repo.maven.apache.org/maven2/")
+    maven("https://repo.aikar.co/content/groups/aikar/")
+    maven("https://nexus.wesjd.net/repository/thirdparty/")
+    maven("https://repo.codemc.io/repository/maven-public/")
+    maven("https://papermc.io/repo/repository/maven-public/")
+    maven("https://repo.codemc.io/repository/maven-releases/")
+    maven("https://repo.codemc.io/repository/maven-snapshots/")
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
 }
 
 dependencies {
