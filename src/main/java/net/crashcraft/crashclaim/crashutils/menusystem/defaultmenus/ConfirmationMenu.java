@@ -3,6 +3,7 @@ package net.crashcraft.crashclaim.crashutils.menusystem.defaultmenus;
 import net.crashcraft.crashclaim.crashutils.menusystem.GUI;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -30,7 +31,7 @@ public class ConfirmationMenu extends GUI {
                             ItemStack acceptItem,
                             ItemStack cancelItem,
                             BiFunction<Player, Boolean, String> function, Function<Player, String> onCloseFunction){
-        super(player, String.valueOf(title), 45);
+        super(player, MiniMessage.miniMessage().serialize(title), 45);
 
         this.player = player;
         this.function = function;
