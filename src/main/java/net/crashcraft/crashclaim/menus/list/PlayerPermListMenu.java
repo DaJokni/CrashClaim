@@ -9,6 +9,7 @@ import net.crashcraft.crashclaim.localization.Localization;
 import net.crashcraft.crashclaim.menus.permissions.SimplePermissionMenu;
 import net.crashcraft.crashclaim.permissions.PermissionHelper;
 import net.crashcraft.crashclaim.permissions.PermissionRoute;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -20,7 +21,7 @@ import java.util.UUID;
 public class PlayerPermListMenu {
     public PlayerPermListMenu(BaseClaim claim, Player viewer, GUI previous){
         if (!PermissionHelper.getPermissionHelper().hasPermission(claim, viewer.getUniqueId(), PermissionRoute.MODIFY_PERMISSIONS)){
-            viewer.spigot().sendMessage(Localization.MENU__GENERAL__INSUFFICIENT_PERMISSION.getMessage(viewer));
+            viewer.sendMessage(Localization.MENU__GENERAL__INSUFFICIENT_PERMISSION.getMessage(viewer));
             //Try and close an inventory, want to close a loose end just in case
             viewer.closeInventory();
             return;
@@ -50,7 +51,7 @@ public class PlayerPermListMenu {
             throw new RuntimeException("Claim was not of known type.");
         }
 
-        new PlayerListMenu(BaseComponent.toLegacyText(Localization.MENU__LIST_PLAYERS__TITLE.getMessage(null)), viewer, previous, uuids, (gui, uuid) -> {
+        new PlayerListMenu(MiniMessage.miniMessage().serialize(Localization.MENU__LIST_PLAYERS__TITLE.getMessage(null)), viewer, previous, uuids, (gui, uuid) -> {
             new SimplePermissionMenu(viewer, claim, uuid, gui).open();
             return "";
         }).open();

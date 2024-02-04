@@ -33,7 +33,7 @@ public class EjectCommand extends BaseCommand {
         Player otherPlayer = CrashClaim.getPlugin().getServer().getPlayer(value);
 
         if (otherPlayer == null) {
-            player.spigot().sendMessage(Localization.EJECT__INVALID_PLAYER.getMessage(player));
+            player.sendMessage(Localization.EJECT__INVALID_PLAYER.getMessage(player));
             return;
         }
 
@@ -41,7 +41,7 @@ public class EjectCommand extends BaseCommand {
         Claim claim = manager.getClaim(location.getBlockX(), location.getBlockZ(), location.getWorld().getUID());
         if (claim != null){
             if (!PermissionHelper.getPermissionHelper().hasPermission(player.getUniqueId(), player.getLocation(), PermissionRoute.MODIFY_PERMISSIONS)){
-                player.spigot().sendMessage(Localization.EJECT__NO_PERMISSION.getMessage(player));
+                player.sendMessage(Localization.EJECT__NO_PERMISSION.getMessage(player));
                 return;
             }
 
@@ -49,12 +49,12 @@ public class EjectCommand extends BaseCommand {
             Claim otherClaim = manager.getClaim(otherLocation.getBlockX(), otherLocation.getBlockZ(), otherLocation.getWorld().getUID());
 
             if (!claim.equals(otherClaim)){
-                player.spigot().sendMessage(Localization.EJECT__NOT_SAME_CLAIM.getMessage(player));
+                player.sendMessage(Localization.EJECT__NOT_SAME_CLAIM.getMessage(player));
                 return;
             }
 
             if (PermissionHelper.getPermissionHelper().hasPermission(otherPlayer.getUniqueId(), otherPlayer.getLocation(), PermissionRoute.MODIFY_PERMISSIONS)){
-                player.spigot().sendMessage(Localization.EJECT__HAS_PERMISSION.getMessage(player));
+                player.sendMessage(Localization.EJECT__HAS_PERMISSION.getMessage(player));
                 return;
             }
 
@@ -76,10 +76,10 @@ public class EjectCommand extends BaseCommand {
                 }
             }
 
-            otherPlayer.spigot().sendMessage(Localization.EJECT__BEEN_EJECTED.getMessage(otherPlayer));
-            player.spigot().sendMessage(Localization.EJECT__SUCCESS.getMessage(player));
+            otherPlayer.sendMessage(Localization.EJECT__BEEN_EJECTED.getMessage(otherPlayer));
+            player.sendMessage(Localization.EJECT__SUCCESS.getMessage(player));
         } else {
-            player.spigot().sendMessage(Localization.EJECT__NO_CLAIM.getMessage(player));
+            player.sendMessage(Localization.EJECT__NO_CLAIM.getMessage(player));
         }
     }
 }

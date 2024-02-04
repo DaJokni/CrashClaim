@@ -34,11 +34,6 @@ dependencies {
     // Paper
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
 
-    // Adventure
-    compileOnly("net.kyori:adventure-api:4.15.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.3.2")
-    compileOnly("net.kyori:adventure-text-minimessage:4.15.0")
-
     // Other
     implementation("co.aikar:taskchain-bukkit:3.7.2")
     implementation("net.wesjd:anvilgui:1.9.2-SNAPSHOT")

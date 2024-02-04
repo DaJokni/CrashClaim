@@ -32,7 +32,6 @@ import net.crashcraft.crashclaim.permissions.PermissionHelper;
 import net.crashcraft.crashclaim.pluginsupport.PluginSupport;
 import net.crashcraft.crashclaim.pluginsupport.PluginSupportManager;
 import net.crashcraft.crashclaim.visualize.VisualizationManager;
-import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
@@ -61,7 +60,6 @@ public class CrashClaim extends JavaPlugin {
     private PaymentProcessor payment;
     private CommandManager commandManager;
     private MigrationManager migrationManager;
-    private BukkitAudiences adventure;
 
     @Override
     public void onLoad() {
@@ -103,7 +101,6 @@ public class CrashClaim extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(pluginSupport, this);
 
         taskChainFactory = BukkitTaskChainFactory.create(this);
-        this.adventure = BukkitAudiences.create(this);
 
         loadConfigs();
 
@@ -183,7 +180,6 @@ public class CrashClaim extends JavaPlugin {
         payment = null;
         commandManager = null;
         migrationManager = null;
-        adventure = null;
     }
     public ProcessorManager setupPaymentProvider(JavaPlugin plugin){
         return setupPaymentProvider(plugin, "");
@@ -267,10 +263,6 @@ public class CrashClaim extends JavaPlugin {
 
     public MigrationManager getMigrationManager() {
         return migrationManager;
-    }
-
-    public BukkitAudiences getAdventure() {
-        return adventure;
     }
 
     public NMSHandler getHandler() {

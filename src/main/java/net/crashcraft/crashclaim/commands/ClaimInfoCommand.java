@@ -57,14 +57,14 @@ public class ClaimInfoCommand extends BaseCommand {
             ));
 
             for (Map.Entry<Material, Integer> entry :set.getContainers().entrySet()) {
-                player.spigot().sendMessage(Localization.CLAIM_INFO__CONTAINER_MESSAGE.getMessage(
+                player.sendMessage(Localization.CLAIM_INFO__CONTAINER_MESSAGE.getMessage(
                         player,
                         "name", CrashClaim.getPlugin().getMaterialName().getMaterialName(entry.getKey()),
                         "status", entry.getValue() == PermState.ENABLED ? enabled : disabled
                 ));
             }
         } else {
-            player.spigot().sendMessage(Localization.CLAIM_INFO__NO_CLAIM.getMessage(player));
+            player.sendMessage(Localization.CLAIM_INFO__NO_CLAIM.getMessage(player));
         }
     }
 }

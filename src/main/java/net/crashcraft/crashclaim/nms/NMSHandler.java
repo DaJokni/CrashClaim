@@ -9,6 +9,7 @@ import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerDe
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityMetadata;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSpawnEntity;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerTeams;
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -20,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class NMSHandler {
 
-    public void sendActionBar(Player player, BaseComponent[] message) {
+    public void sendActionBar(Player player, Component message) {
         player.sendActionBar(message);
     }
 

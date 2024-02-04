@@ -11,6 +11,7 @@ import net.crashcraft.crashclaim.localization.Localization;
 import net.crashcraft.crashclaim.menus.ClaimMenu;
 import net.crashcraft.crashclaim.permissions.PermissionHelper;
 import net.crashcraft.crashclaim.permissions.PermissionRoute;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -32,7 +33,7 @@ public class ClaimListMenu extends GUI {
     private final HashMap<Integer, Claim> pageItemsDisplay;
 
     public ClaimListMenu(Player player, GUI previousMenu) {
-        super(player, BaseComponent.toLegacyText(Localization.MENU__CLAIM_LIST__TITLE.getMessage(null)), 54);
+        super(player, MiniMessage.miniMessage().serialize(Localization.MENU__CLAIM_LIST__TITLE.getMessage(null)), 54);
         this.previousMenu = previousMenu;
         this.claims = new ArrayList<>();
         this.pageItemsDisplay = new HashMap<>();

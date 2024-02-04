@@ -36,14 +36,14 @@ public class NewSubClaimMode implements ClaimMode {
 
         visualizationManager.getProvider(player.getUniqueId()).spawnMarkerVisual(VisualColor.YELLOW, group, firstLocation.add(0, 1, 0)).spawn();
 
-        player.spigot().sendMessage(Localization.NEW_SUBCLAIM__CLICK_CORNER.getMessage(player));
+        player.sendMessage(Localization.NEW_SUBCLAIM__CLICK_CORNER.getMessage(player));
     }
 
     @Override
     public void click(Player player, Location click) {
         if (!MathUtils.iskPointCollide(claim.getMinX(), claim.getMinZ(),
                 claim.getMaxX(), claim.getMaxZ(), click.getBlockX(), click.getBlockZ())){
-            player.spigot().sendMessage(Localization.NEW_SUBCLAIM__NOT_INSIDE_PARENT.getMessage(player));
+            player.sendMessage(Localization.NEW_SUBCLAIM__NOT_INSIDE_PARENT.getMessage(player));
             cleanup(player.getUniqueId(), true);
             return;
         }
@@ -61,22 +61,22 @@ public class NewSubClaimMode implements ClaimMode {
                 visualizationManager.deSpawnAfter(visual, 5);
             }
 
-            player.spigot().sendMessage(Localization.NEW_SUBCLAIM__SUCCESS.getMessage(player));
+            player.sendMessage(Localization.NEW_SUBCLAIM__SUCCESS.getMessage(player));
 
             cleanup(player.getUniqueId(), false);
         } else {
             switch (response.getError()) {
                 case TOO_SMALL:
-                    player.spigot().sendMessage(Localization.NEW_SUBCLAIM__MIN_AREA.getMessage(player));
+                    player.sendMessage(Localization.NEW_SUBCLAIM__MIN_AREA.getMessage(player));
                     break;
                 case OUT_OF_BOUNDS:
-                    player.spigot().sendMessage(Localization.NEW_SUBCLAIM__NEED_PARENT.getMessage(player));
+                    player.sendMessage(Localization.NEW_SUBCLAIM__NEED_PARENT.getMessage(player));
                     break;
                 case OVERLAP_EXISTING_SUBCLAIM:
-                    player.spigot().sendMessage(Localization.NEW_SUBCLAIM__NO_OVERLAP.getMessage(player));
+                    player.sendMessage(Localization.NEW_SUBCLAIM__NO_OVERLAP.getMessage(player));
                     break;
                 case GENERIC:
-                    player.spigot().sendMessage(Localization.NEW_SUBCLAIM__ERROR.getMessage(player));
+                    player.sendMessage(Localization.NEW_SUBCLAIM__ERROR.getMessage(player));
                     break;
             }
             cleanup(player.getUniqueId(), true);

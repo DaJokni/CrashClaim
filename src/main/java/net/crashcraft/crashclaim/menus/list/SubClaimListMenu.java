@@ -6,6 +6,7 @@ import net.crashcraft.crashclaim.config.GlobalConfig;
 import net.crashcraft.crashclaim.crashutils.menusystem.GUI;
 import net.crashcraft.crashclaim.localization.Localization;
 import net.crashcraft.crashclaim.menus.SubClaimMenu;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -25,7 +26,7 @@ public class SubClaimListMenu extends GUI {
     private ArrayList<SubClaim> claims;
 
     public SubClaimListMenu(Player player, GUI previousMenu, Claim claim) {
-        super(player, BaseComponent.toLegacyText(Localization.MENU__SUB_CLAIM_LIST__TITLE.getMessage(null)), 54);
+        super(player, MiniMessage.miniMessage().serialize(Localization.MENU__SUB_CLAIM_LIST__TITLE.getMessage(null)), 54);
         this.previousMenu = previousMenu;
         this.claim = claim;
         this.pageItemsDisplay = new HashMap<>();

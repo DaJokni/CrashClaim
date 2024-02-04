@@ -1,8 +1,9 @@
 package net.crashcraft.crashclaim.claimobjects;
 
-import net.crashcraft.crashclaim.CrashClaim;
 import net.crashcraft.crashclaim.localization.Localization;
-import net.md_5.bungee.api.chat.BaseComponent;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 
 import java.util.UUID;
 
@@ -20,9 +21,9 @@ public abstract class BaseClaim {
 
     private String name;
     private String entryMessage;
-    private BaseComponent[] parsedEntryMessage; // Cached for efficiency
+    private TextComponent parsedEntryMessage; // Cached for efficiency
     private String exitMessage;
-    private BaseComponent[] parsedExitMessage; // Cached for efficiency
+    private TextComponent parsedExitMessage; // Cached for efficiency
 
     private boolean isEditing = false;
     private boolean deleted = false;
@@ -101,13 +102,13 @@ public abstract class BaseClaim {
 
     public void setEntryMessage(String entryMessage) {
         this.entryMessage = entryMessage;
-        this.parsedEntryMessage = entryMessage == null ? null : Localization.parseRawUserInput(entryMessage);
+        this.parsedEntryMessage = entryMessage == null ? null : (TextComponent) MiniMessage.miniMessage().deserialize(entryMessage);
         setToSave(true);
     }
 
     public void setExitMessage(String exitMessage) {
         this.exitMessage = exitMessage;
-        this.parsedExitMessage = exitMessage == null ? null :  Localization.parseRawUserInput(exitMessage);
+        this.parsedExitMessage = exitMessage == null ? null : (TextComponent) MiniMessage.miniMessage().deserialize(exitMessage);
         setToSave(true);
     }
 
@@ -135,11 +136,11 @@ public abstract class BaseClaim {
         this.deleted = true;
     }
 
-    public BaseComponent[] getParsedEntryMessage() {
+    public TextComponent getParsedEntryMessage() {
         return parsedEntryMessage;
     }
 
-    public BaseComponent[] getParsedExitMessage() {
+    public TextComponent getParsedExitMessage() {
         return parsedExitMessage;
     }
 }
