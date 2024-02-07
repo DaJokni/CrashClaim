@@ -1,7 +1,10 @@
 name: CrashClaim
 version: ${version}
 description: A modern advanced user oriented claiming system
-author: Chasewhip
+author: 'Chasewhip'
+contributors:
+  - 'MCCasper'
+  - 'DaJokni'
 main: net.crashcraft.crashclaim.CrashClaim
 api-version: '1.20'
 dependencies:
