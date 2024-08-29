@@ -81,7 +81,7 @@ public class CrashClaim extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        List<String> supportedVersions = Arrays.asList("1.20.4", "1.20.5", "1.20.6", "1.21"); //order from min to max
+        List<String> supportedVersions = Arrays.asList("1.20.4", "1.20.5", "1.20.6", "1.21", "1.21.1"); //order from min to max
         if (!isServerSupported(supportedVersions)) {
             getServer().getPluginManager().disablePlugin(this);
             return;
@@ -213,15 +213,15 @@ public class CrashClaim extends JavaPlugin {
 
         String minecraftVersion = Bukkit.getMinecraftVersion();
         int minecraftVersionInt = versionStringToInt(minecraftVersion);
-        int minSupportedVersionInt = versionStringToInt(supportedVersions.get(0));
-        int maxSupportedVersionInt = versionStringToInt(supportedVersions.get(supportedVersions.size() - 1));
+        int minSupportedVersionInt = versionStringToInt(supportedVersions.getFirst());
+        int maxSupportedVersionInt = versionStringToInt(supportedVersions.getLast());
 
         if (minecraftVersionInt < minSupportedVersionInt) {
-            getLogger().severe("Your server's version is older than CrashClaim's minimum supported version, which is " + supportedVersions.get(0) +
+            getLogger().severe("Your server's version is older than CrashClaim's minimum supported version, which is " + supportedVersions.getFirst() +
                     ". The plugin will not attempt loading. Your server is currently running version " + minecraftVersion + ".");
             return false;
         } else if (minecraftVersionInt > maxSupportedVersionInt) {
-            getLogger().warning("Your server's version is newer than CrashClaim's maximum supported version, which is " + supportedVersions.get(supportedVersions.size() - 1) +
+            getLogger().warning("Your server's version is newer than CrashClaim's maximum supported version, which is " + supportedVersions.getLast() +
                     ". The plugin will still attempt to load, but issues may arise. " +
                     "Please check if the plugin has newer versions available. Your server is currently running version " + minecraftVersion + ".");
         }
