@@ -1,7 +1,7 @@
 package net.crashcraft.crashclaim.payment;
 
 import net.crashcraft.crashclaim.payment.providers.FakePaymentProvider;
-import net.crashcraft.crashclaim.payment.providers.VaultPaymentProvider;
+import net.crashcraft.crashclaim.payment.providers.GahvilaCorePaymentProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.ServicePriority;
@@ -40,10 +40,10 @@ public class ProcessorManager {
             processor = new PaymentProcessor(paymentProvider, plugin);
         } else if (Bukkit.getServer().getPluginManager().getPlugin("Vault") != null){    //Try and default to vault
             try {
-                logger.info("Using Vault as a payment processor");
-                processor = new PaymentProcessor(new VaultPaymentProvider(), plugin);
+                logger.info("Using GahvilaCore as a payment processor");
+                processor = new PaymentProcessor(new GahvilaCorePaymentProvider(), plugin);
             } catch (ProviderInitializationException e){
-                logger.severe("Vault was unable to supply a valid economy, payments will be reverted to a fake payment provider where all transactions will be approved.");
+                logger.severe("GahvilaCore was unable to supply a valid economy, payments will be reverted to a fake payment provider where all transactions will be approved.");
                 processor = new PaymentProcessor(new FakePaymentProvider(), plugin);
             }
         } else {

@@ -17,6 +17,7 @@ import net.crashcraft.crashclaim.localization.Localization;
 import net.crashcraft.crashclaim.permissions.PermissionHelper;
 import net.crashcraft.crashclaim.permissions.PermissionRoute;
 import net.crashcraft.crashclaim.permissions.PermissionSetup;
+import net.gahvila.gahvilacore.Profiles.Playtime.PlaytimeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -180,7 +181,7 @@ public class ClaimDataManager implements Listener {
 
             if (difference > 0) {
                 int price = (int) Math.ceil(difference * GlobalConfig.money_per_block);
-                String priceString = Integer.toString(price);
+                String priceString = PlaytimeManager.formatDuration(price);
                 //Check price with player
                 new ConfirmationMenu(resizer,
                         Localization.RESIZE__MENU__CONFIRMATION__TITLE.getMessage(resizer),

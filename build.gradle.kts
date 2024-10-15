@@ -63,6 +63,8 @@ dependencies {
     compileOnly("com.google.auto.service:auto-service:1.1.1")
     annotationProcessor("com.google.auto.service:auto-service:1.1.1")
 
+    compileOnly("net.gahvila:GahvilaCore:2.0")
+
     // Cache2k
     val cache2kVersion = "1.2.2.Final"
 

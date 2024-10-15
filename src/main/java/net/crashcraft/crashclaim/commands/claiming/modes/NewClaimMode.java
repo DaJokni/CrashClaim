@@ -18,6 +18,7 @@ import net.crashcraft.crashclaim.visualize.api.BaseVisual;
 import net.crashcraft.crashclaim.visualize.api.VisualColor;
 import net.crashcraft.crashclaim.visualize.api.VisualGroup;
 import net.crashcraft.crashclaim.visualize.api.VisualType;
+import net.gahvila.gahvilacore.Profiles.Playtime.PlaytimeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -79,7 +80,7 @@ public class NewClaimMode implements ClaimMode {
 
         int price = (GlobalConfig.bypassModeBypassesMoney && PermissionHelper.getPermissionHelper().getBypassManager().isBypass(player.getUniqueId())) ?
                 0 : (int) Math.ceil(area * GlobalConfig.money_per_block);
-        String priceString = Integer.toString(price);
+        String priceString = PlaytimeManager.formatDuration(price);
 
         if (price > 0){
             new ConfirmationMenu(player,
