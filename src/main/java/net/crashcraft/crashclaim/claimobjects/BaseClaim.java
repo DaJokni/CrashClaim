@@ -2,6 +2,7 @@ package net.crashcraft.crashclaim.claimobjects;
 
 import net.crashcraft.crashclaim.CrashClaim;
 import net.crashcraft.crashclaim.localization.Localization;
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.chat.BaseComponent;
 
 import java.util.UUID;
@@ -20,9 +21,9 @@ public abstract class BaseClaim {
 
     private String name;
     private String entryMessage;
-    private BaseComponent[] parsedEntryMessage; // Cached for efficiency
+    private Component parsedEntryMessage; // Cached for efficiency
     private String exitMessage;
-    private BaseComponent[] parsedExitMessage; // Cached for efficiency
+    private Component parsedExitMessage; // Cached for efficiency
 
     private boolean isEditing = false;
     private boolean deleted = false;
@@ -135,11 +136,11 @@ public abstract class BaseClaim {
         this.deleted = true;
     }
 
-    public BaseComponent[] getParsedEntryMessage() {
+    public Component getParsedEntryMessage() {
         return parsedEntryMessage;
     }
 
-    public BaseComponent[] getParsedExitMessage() {
+    public Component getParsedExitMessage() {
         return parsedExitMessage;
     }
 }

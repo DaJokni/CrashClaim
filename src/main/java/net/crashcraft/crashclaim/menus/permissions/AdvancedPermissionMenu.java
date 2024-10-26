@@ -29,9 +29,8 @@ public class AdvancedPermissionMenu extends MenuListHelper {
 
     public AdvancedPermissionMenu(Player player, BaseClaim claim, UUID uuid, GUI prevMenu) {
         super(player,
-                BaseComponent.toLegacyText(claim instanceof SubClaim ?
-                                Localization.MENU__SUB_CLAIM_ADVANCED_PERMISSIONS__TITLE.getMessage(null) : Localization.MENU__ADVANCED_PERMISSIONS__TITLE.getMessage(null)
-                        ),
+                claim instanceof SubClaim ?
+                                Localization.MENU__SUB_CLAIM_ADVANCED_PERMISSIONS__TITLE.getMessage(null) : Localization.MENU__ADVANCED_PERMISSIONS__TITLE.getMessage(null),
                 54, prevMenu);
 
         this.uuid = uuid;
@@ -212,7 +211,7 @@ public class AdvancedPermissionMenu extends MenuListHelper {
 
     @Override
     public void invalidPermissions() {
-        player.spigot().sendMessage(Localization.MENU__SIMPLE_PERMISSIONS__NO_PERMISSION.getMessage(player));
+        player.sendMessage(Localization.MENU__SIMPLE_PERMISSIONS__NO_PERMISSION.getMessage(player));
         forceClose();
     }
 

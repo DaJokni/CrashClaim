@@ -49,13 +49,13 @@ public class UnClaimCommand extends BaseCommand {
                     (p, aBoolean) -> {
                         if (aBoolean) {
                             if (!PermissionHelper.getPermissionHelper().hasPermission(claim, p.getUniqueId(), PermissionRoute.MODIFY_CLAIM)) {
-                                player.spigot().sendMessage(Localization.UN_CLAIM__NO_PERMISSION.getMessage(player));
+                                player.sendMessage(Localization.UN_CLAIM__NO_PERMISSION.getMessage(player));
                                 return "";
                             }
 
                             for (SubClaim subClaim : claim.getSubClaims()){
                                 if (!PermissionHelper.getPermissionHelper().hasPermission(subClaim, p.getUniqueId(), PermissionRoute.MODIFY_CLAIM)){
-                                    player.spigot().sendMessage(Localization.UN_CLAIM__NO_PERMISSION_IN_ALL.getMessage(player));
+                                    player.sendMessage(Localization.UN_CLAIM__NO_PERMISSION_IN_ALL.getMessage(player));
                                     return "";
                                 }
                             }
@@ -69,7 +69,7 @@ public class UnClaimCommand extends BaseCommand {
                         return "";
                     }, p -> "").open();
         } else {
-            player.spigot().sendMessage(Localization.UN_CLAIM__NO_CLAIM.getMessage(player));
+            player.sendMessage(Localization.UN_CLAIM__NO_CLAIM.getMessage(player));
         }
     }
 
@@ -91,13 +91,13 @@ public class UnClaimCommand extends BaseCommand {
                                 String name = claim.getName();
 
                                 if (!PermissionHelper.getPermissionHelper().hasPermission(claim, p.getUniqueId(), PermissionRoute.MODIFY_CLAIM)) {
-                                    player.spigot().sendMessage(Localization.UN_CLAIM_ALL__NO_PERMISSION.getMessage(player, "name", name));
+                                    player.sendMessage(Localization.UN_CLAIM_ALL__NO_PERMISSION.getMessage(player, "name", name));
                                     return "";
                                 }
 
                                 for (SubClaim subClaim : claim.getSubClaims()) {
                                     if (!PermissionHelper.getPermissionHelper().hasPermission(subClaim, p.getUniqueId(), PermissionRoute.MODIFY_CLAIM)) {
-                                        player.spigot().sendMessage(Localization.UN_CLAIM_ALL__NO_PERMISSION_IN_ALL.getMessage(player, "name", name));
+                                        player.sendMessage(Localization.UN_CLAIM_ALL__NO_PERMISSION_IN_ALL.getMessage(player, "name", name));
                                         return "";
                                     }
                                 }
@@ -112,7 +112,7 @@ public class UnClaimCommand extends BaseCommand {
                         return "";
                     }, p -> "").open();
         } else {
-            player.spigot().sendMessage(Localization.UN_CLAIM_ALL__NO_CLAIM.getMessage(player));
+            player.sendMessage(Localization.UN_CLAIM_ALL__NO_CLAIM.getMessage(player));
         }
     }
 
@@ -150,7 +150,7 @@ public class UnClaimCommand extends BaseCommand {
                         return "";
                     }, p -> "").open();
         } else {
-            player.spigot().sendMessage(Localization.UN_CLAIM_ALL__NO_CLAIM.getMessage(player));
+            player.sendMessage(Localization.UN_CLAIM_ALL__NO_CLAIM.getMessage(player));
         }
     }
 }

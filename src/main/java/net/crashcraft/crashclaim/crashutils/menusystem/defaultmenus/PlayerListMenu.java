@@ -7,6 +7,8 @@ import io.papermc.lib.PaperLib;
 import net.crashcraft.crashclaim.CrashClaim;
 import net.crashcraft.crashclaim.crashutils.menusystem.GUI;
 import net.crashcraft.crashclaim.localization.Localization;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -29,8 +31,8 @@ public class PlayerListMenu extends GUI {
     private final ArrayList<UUID> arrayList;
     private final BiFunction<GUI, UUID, String> function;
 
-    public PlayerListMenu(String title, Player player, GUI previousMenu, ArrayList<UUID> arrayList, BiFunction<GUI, UUID, String> function){
-        super(player, title == null ? "Select Player" : title, 54);
+    public PlayerListMenu(Component title, Player player, GUI previousMenu, ArrayList<UUID> arrayList, BiFunction<GUI, UUID, String> function){
+        super(player, title == null ? Component.text("Select Player") : title, 54);
         this.previousMenu = previousMenu;
         this.arrayList = arrayList;
         this.function = function;

@@ -46,7 +46,7 @@ public class MenuCommand extends BaseCommand {
         if (claim != null){
             new ClaimMenu(player, claim, null).open();
         } else {
-            player.spigot().sendMessage(Localization.CLAIM_SETTINGS__NO_CLAIM.getMessage(player));
+            player.sendMessage(Localization.CLAIM_SETTINGS__NO_CLAIM.getMessage(player));
         }
     }
 
@@ -80,13 +80,13 @@ public class MenuCommand extends BaseCommand {
                                     visualizationManager.deSpawnAfter(visual, 10);
                                 }
                             } else {
-                                player.spigot().sendMessage(Localization.UN_SUBCLAIM__MENU__NO_PERMISSION.getMessage(player));
+                                player.sendMessage(Localization.UN_SUBCLAIM__MENU__NO_PERMISSION.getMessage(player));
                             }
                         }
                         return "";
                     }, p -> "").open();
         } else {
-            player.spigot().sendMessage(Localization.UN_SUBCLAIM__MENU__NO_CLAIM.getMessage(player));
+            player.sendMessage(Localization.UN_SUBCLAIM__MENU__NO_CLAIM.getMessage(player));
         }
     }
 }

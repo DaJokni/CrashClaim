@@ -12,6 +12,7 @@ import net.crashcraft.crashclaim.crashutils.menusystem.GUI;
 import net.crashcraft.crashclaim.localization.Localization;
 import net.crashcraft.crashclaim.permissions.PermissionHelper;
 import net.crashcraft.crashclaim.permissions.PermissionRoute;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -49,7 +50,7 @@ public abstract class MenuListHelper extends GUI {
     protected ItemStack descItem;
     protected final GUI prevMenu;
 
-    public MenuListHelper(Player player, String title, int slots, GUI prevMenu) {
+    public MenuListHelper(Player player, Component title, int slots, GUI prevMenu) {
         super(player, title, slots);
 
         this.prevMenu = prevMenu;
