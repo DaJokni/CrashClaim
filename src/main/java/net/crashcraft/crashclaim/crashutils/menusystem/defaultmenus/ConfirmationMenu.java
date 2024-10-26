@@ -1,6 +1,7 @@
 package net.crashcraft.crashclaim.crashutils.menusystem.defaultmenus;
 
 import net.crashcraft.crashclaim.crashutils.menusystem.GUI;
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -23,12 +24,12 @@ public class ConfirmationMenu extends GUI {
     private final ItemStack cancelItem;
 
     public ConfirmationMenu(Player player,
-                            BaseComponent[] title,
+                            Component title,
                             ItemStack item,
                             ItemStack acceptItem,
                             ItemStack cancelItem,
                             BiFunction<Player, Boolean, String> function, Function<Player, String> onCloseFunction){
-        super(player, BaseComponent.toLegacyText(title), 45);
+        super(player, title, 45);
 
         this.player = player;
         this.function = function;

@@ -32,7 +32,7 @@ public class ClaimListMenu extends GUI {
     private final HashMap<Integer, Claim> pageItemsDisplay;
 
     public ClaimListMenu(Player player, GUI previousMenu) {
-        super(player, BaseComponent.toLegacyText(Localization.MENU__CLAIM_LIST__TITLE.getMessage(null)), 54);
+        super(player, Localization.MENU__CLAIM_LIST__TITLE.getMessage(null), 54);
         this.previousMenu = previousMenu;
         this.claims = new ArrayList<>();
         this.pageItemsDisplay = new HashMap<>();

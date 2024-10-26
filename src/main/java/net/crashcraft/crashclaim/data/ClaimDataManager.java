@@ -203,13 +203,13 @@ public class ClaimDataManager implements Listener {
                                             return;
                                         } else {
                                             //Didnt have enough money or something
-                                            player.spigot().sendMessage(Localization.RESIZE__TRANSACTION_ERROR.getMessage(player,
+                                            player.sendMessage(Localization.RESIZE__TRANSACTION_ERROR.getMessage(player,
                                                     "error", response.getTransactionError()));
                                         }
                                         consumer.accept(false);
                                     });
                                 } else {
-                                    player.spigot().sendMessage(Localization.RESIZE__NO_LONGER_PERMISSION.getMessage(player));
+                                    player.sendMessage(Localization.RESIZE__NO_LONGER_PERMISSION.getMessage(player));
                                 }
                             }
                             return "";

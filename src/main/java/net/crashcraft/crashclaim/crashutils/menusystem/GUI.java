@@ -1,6 +1,7 @@
 package net.crashcraft.crashclaim.crashutils.menusystem;
 
 import net.crashcraft.crashclaim.CrashClaim;
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,7 +23,7 @@ import java.util.UUID;
 public abstract class GUI {
     private static final Plugin plugin = CrashClaim.getPlugin();
 
-    private String title;
+    private Component title;
     private int slots;
 
     protected Inventory inv;
@@ -30,16 +31,16 @@ public abstract class GUI {
 
     private boolean lockGUI = true;
 
-    public GUI(Player player, String title, int slots){
+    public GUI(Player player, Component title, int slots){
         initialize(player, title, slots);
     }
 
-    public GUI(Player player, String title, int slots, boolean lockGUI){
+    public GUI(Player player, Component title, int slots, boolean lockGUI){
         initialize(player, title, slots);
         this.lockGUI = lockGUI;
     }
 
-    private void initialize(Player player, String title, int slots){
+    private void initialize(Player player, Component title, int slots){
         this.title = title;
         this.slots = slots;
         this.player = player;
@@ -82,7 +83,7 @@ public abstract class GUI {
         return player;
     }
 
-    public String getTitle() {
+    public Component getTitle() {
         return title;
     }
 
