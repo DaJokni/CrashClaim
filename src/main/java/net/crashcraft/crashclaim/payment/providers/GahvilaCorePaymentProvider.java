@@ -59,17 +59,18 @@ public class GahvilaCorePaymentProvider implements PaymentProvider {
         });
     }
 
-
+    //gets the balance in minutes
     @Override
     public void getBalance(UUID user, Consumer<Double> callback) {
         OfflinePlayer player = Bukkit.getOfflinePlayer(user);
+        double starterMoney = 1000; //minutes
 
         getClaimedPlaytime(player).thenAccept(claimedPlaytime -> {
-            double balance = 3600 + (double) claimedPlaytime;
+            double balance = starterMoney + ((double) claimedPlaytime / 60);
 
             callback.accept(balance);
         }).exceptionally(ex -> {
-            callback.accept(3600.0);
+            callback.accept(starterMoney);
             return null;
         });
     }

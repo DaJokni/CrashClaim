@@ -80,7 +80,7 @@ public class NewClaimMode implements ClaimMode {
 
         int price = (GlobalConfig.bypassModeBypassesMoney && PermissionHelper.getPermissionHelper().getBypassManager().isBypass(player.getUniqueId())) ?
                 0 : (int) Math.ceil(area * GlobalConfig.money_per_block);
-        String priceString = PlaytimeManager.formatDuration(price);
+        String priceString = Integer.toString(price);
 
         if (price > 0){
             new ConfirmationMenu(player,

@@ -181,7 +181,7 @@ public class ClaimDataManager implements Listener {
 
             if (difference > 0) {
                 int price = (int) Math.ceil(difference * GlobalConfig.money_per_block);
-                String priceString = PlaytimeManager.formatDuration(price);
+                String priceString = Integer.toString(price);
                 //Check price with player
                 new ConfirmationMenu(resizer,
                         Localization.RESIZE__MENU__CONFIRMATION__TITLE.getMessage(resizer),
