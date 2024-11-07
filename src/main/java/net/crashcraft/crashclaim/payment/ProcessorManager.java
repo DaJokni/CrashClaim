@@ -38,7 +38,7 @@ public class ProcessorManager {
         if (paymentProvider != null){
             logger.info("Using " + paymentProvider.getProviderIdentifier() + " as a payment processor");
             processor = new PaymentProcessor(paymentProvider, plugin);
-        } else if (Bukkit.getServer().getPluginManager().getPlugin("Vault") != null){    //Try and default to vault
+        } else if (Bukkit.getServer().getPluginManager().getPlugin("GahvilaCore") != null){    //Try and default to gahvilacore
             try {
                 logger.info("Using GahvilaCore as a payment processor");
                 processor = new PaymentProcessor(new GahvilaCorePaymentProvider(), plugin);
