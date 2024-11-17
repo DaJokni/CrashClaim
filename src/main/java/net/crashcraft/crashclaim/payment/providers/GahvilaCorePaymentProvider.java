@@ -10,6 +10,7 @@ import net.gahvila.gahvilacore.Profiles.Playtime.PlaytimeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -18,7 +19,7 @@ public class GahvilaCorePaymentProvider implements PaymentProvider {
     private PlaytimeManager playtimeManager;
 
     public GahvilaCorePaymentProvider() {
-        this.playtimeManager = new PlaytimeManager();
+        this.playtimeManager = new PlaytimeManager(Optional.empty());
     }
 
     @Override
