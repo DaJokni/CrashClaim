@@ -79,7 +79,7 @@ public class CrashClaim extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        List<String> supportedVersions = Arrays.asList("1.20.4", "1.20.5", "1.20.6", "1.21", "1.21.1", "1.21.2", "1.21.3"); //order from min to max
+        List<String> supportedVersions = Arrays.asList("1.20.4", "1.20.5", "1.20.6", "1.21", "1.21.1", "1.21.2", "1.21.3", "1.21.4"); //order from min to max
         if (!isServerSupported(supportedVersions)) {
             getServer().getPluginManager().disablePlugin(this);
             return;

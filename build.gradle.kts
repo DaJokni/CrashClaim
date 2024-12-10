@@ -44,8 +44,8 @@ dependencies {
     implementation("io.papermc:paperlib:1.0.7")
     implementation("co.aikar:idb-core:1.0.0-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:5.1.0")
-    implementation("com.github.retrooper:packetevents-spigot:2.6.0")
     implementation("org.bstats:bstats-bukkit:3.0.2")
+    compileOnly("com.github.retrooper:packetevents-spigot:2.7.0")
     compileOnly("com.github.N0RSKA:DeluxeSellwandsAPI:32c")
     compileOnly("com.ghostchu:quickshop-api:5.2.0.8")
     compileOnly("com.google.guava:guava:33.2.1-jre")
@@ -77,8 +77,6 @@ tasks {
         relocate("org.bstats", "net.crashcraft.crashclaim.bstats")
         relocate("it.unimi.dsi", "net.crashcraft.crashclaim.fastutil")
         relocate("com.zaxxer.hikari", "net.crashcraft.crashclaim.hikari")
-        relocate("com.github.retrooper.packetevents", "net.crashcraft.crashclaim.packetevents.api")
-        relocate("io.github.retrooper.packetevents", "net.crashcraft.crashclaim.packetevents.impl")
         relocate("net.wesjd", "net.crashcraft.crashclaim.anvilgui")
 
         exclude("/com/google/gson/**")
