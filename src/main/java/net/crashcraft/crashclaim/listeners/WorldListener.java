@@ -8,6 +8,7 @@ import net.crashcraft.crashclaim.permissions.PermissionHelper;
 import net.crashcraft.crashclaim.permissions.PermissionRoute;
 import net.crashcraft.crashclaim.permissions.PermissionSetup;
 import net.crashcraft.crashclaim.visualize.VisualizationManager;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -21,6 +22,7 @@ import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityInteractEvent;
 import org.bukkit.event.entity.SheepRegrowWoolEvent;
+import org.bukkit.event.world.PortalCreateEvent;
 import org.bukkit.event.world.StructureGrowEvent;
 
 import java.util.*;
@@ -207,6 +209,25 @@ public class WorldListener implements Listener {
         }
 
         e.blockList().removeAll(processExplosion(e.blockList()));
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+    public void onPortalCreateEvent(PortalCreateEvent event) {
+        if (GlobalConfig.disabled_worlds.contains(event.getWorld().getUID())) {
+            return;
+        }
+
+        if (event.getReason() == PortalCreateEvent.CreateReason.NETHER_PAIR) {
+            for (BlockState block : event.getBlocks()) {
+                if (!helper.hasPermission(event.getEntity().getUniqueId(), block.getLocation(), PermissionRoute.BUILD)) {
+                    event.setCancelled(true);
+                    if (event.getEntity() instanceof Player player) {
+                        visuals.sendAlert(player, Localization.ALERT__NO_PERMISSIONS__PORTAL_CREATION.getMessage(player));
+                    }
+                    return;
+                }
+            }
+        }
     }
 
     private List<Block> processExplosion(List<Block> blocks ){
