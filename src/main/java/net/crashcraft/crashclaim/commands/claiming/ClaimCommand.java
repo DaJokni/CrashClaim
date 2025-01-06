@@ -24,6 +24,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -127,13 +128,11 @@ public class ClaimCommand extends BaseCommand implements Listener {
                 || e.getClickedBlock() == null){
             return;
         }
-
         click(e.getPlayer(), e.getClickedBlock().getLocation());
     }
 
     public void click(Player player, Location location) {
         UUID uuid = player.getUniqueId();
-
         if (stateMap.containsKey(uuid)){
             if (GlobalConfig.disabled_worlds.contains(player.getWorld().getUID())){
                 player.sendMessage(Localization.DISABLED_WORLD.getMessage(player));
@@ -145,13 +144,15 @@ public class ClaimCommand extends BaseCommand implements Listener {
             return;
         }
         if (modeMap.containsKey(uuid)){
+            player.sendMessage("1");
             if (GlobalConfig.disabled_worlds.contains(player.getWorld().getUID())){
+                player.sendMessage("2");
                 player.sendMessage(Localization.DISABLED_WORLD.getMessage(player));
                 forceCleanup(player.getUniqueId(), true);
                 return;
             }
             ClickState state = modeMap.get(uuid);
-
+            player.sendMessage("3: " + state);
             switch (state) {
                 case CLAIM -> {
                     Claim claim = dataManager.getClaim(location);

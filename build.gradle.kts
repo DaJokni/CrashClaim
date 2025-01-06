@@ -105,8 +105,21 @@ description = "CrashClaim"
 java.sourceCompatibility = JavaVersion.VERSION_21
 
 publishing {
+    repositories {
+        maven {
+            name = "gahvila"
+            url = uri("https://repo.gahvila.net/snapshots/")
+            credentials(PasswordCredentials::class)
+            authentication {
+                create<BasicAuthentication>("basic")
+            }
+        }
+    }
     publications {
         create<MavenPublication>("maven") {
+            groupId = "net.crashcraft"
+            artifactId = "crashclaim"
+            version = findProperty("version").toString()
             from(components["java"])
         }
     }
