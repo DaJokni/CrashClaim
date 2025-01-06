@@ -227,6 +227,7 @@ public enum Localization {
     ALERT__NO_PERMISSIONS__ENTITIES("<red>You do not have permission to interact with entities in this claim"),
     ALERT__NO_PERMISSIONS__TELEPORT("<red>You do not have permission to teleport to that claim."),
     ALERT__NO_PERMISSIONS__TELEPORT_RELOCATE("<red>You do not have permission to teleport to that claim. You have been relocated outside of it."),
+    ALERT__NO_PERMISSIONS__PORTAL_CREATION("<red>You do not have permission to create a portal because the target location is in a claim. Try a different location."),
 
     // General Visuals
 
