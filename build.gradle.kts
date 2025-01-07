@@ -20,6 +20,7 @@ repositories {
     maven("https://repo.mikeprimm.com/")
     maven("https://repo.maven.apache.org/maven2/")
     maven("https://repo.codemc.io/repository/maven-releases/")
+    maven("https://repo.gahvila.net/snapshots/")
     mavenCentral()
 }
 
@@ -51,7 +52,7 @@ dependencies {
     compileOnly("com.google.auto.service:auto-service:1.1.1")
     annotationProcessor("com.google.auto.service:auto-service:1.1.1")
 
-    compileOnly("net.gahvila:GahvilaCore:2.0")
+    compileOnly("net.gahvila:gahvilacore:2.1-SNAPSHOT")
 
     // Cache2k
     val cache2kVersion = "1.2.2.Final"
