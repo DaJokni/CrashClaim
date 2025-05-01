@@ -37,7 +37,7 @@ public class PacketHandler {
         WrapperPlayServerSpawnEntity spawnEntityPacket = new WrapperPlayServerSpawnEntity(id, uuid, EntityTypes.MAGMA_CUBE,
                 new com.github.retrooper.packetevents.protocol.world.Location(x, y, z, 0f, 0f), (float) 0, 0, new Vector3d(0, 0, 0));
 
-        List<EntityData> metadata = new ArrayList<>();
+        List<EntityData<?>> metadata = new ArrayList<>();
         byte bytevalues = 0x20 | 0x40;
         metadata.add(new EntityData(0, EntityDataTypes.BYTE, bytevalues));
         metadata.add(new EntityData(16, EntityDataTypes.INT, 2));
